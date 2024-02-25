@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
       providers: [BlocProvider(create: (context) => MainPageCubit()),],
       child: MaterialApp(
         title: 'Flutter Demo',
+
         theme: ThemeData(
           // This is the theme of your application.
           //
