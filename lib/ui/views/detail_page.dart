@@ -19,7 +19,9 @@ class _DeatilPageState extends State<DeatilPage> {
       appBar: AppBar(
         backgroundColor: Colors.blueAccent[200],
         title: Text("Ürün Detayı",style: TextStyle(fontSize: 20),),
-        leading: Icon(Icons.clear),
+        leading: IconButton(onPressed: (){
+          Navigator.pop(context);
+        }, icon: Icon(Icons.clear)),
         actions: [IconButton(onPressed: (){
           //favori add
         }, icon: Icon(Icons.favorite_border_sharp))],
@@ -39,6 +41,9 @@ class _DeatilPageState extends State<DeatilPage> {
               SizedBox( width: 75,height: 75,
                 child: ElevatedButton(style: ButtonStyle(shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)))),onPressed: (){
                   //-
+                  setState(() {
+                    productAmount--;
+                  });
                 }, child: Icon(Icons.remove)),
               ),
               Text("$productAmount",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
@@ -46,6 +51,9 @@ class _DeatilPageState extends State<DeatilPage> {
                 child: ElevatedButton(style: ButtonStyle(shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)))),
                     onPressed: (){
                   //+
+                      setState(() {
+                        productAmount++;
+                      });
                 }, child: Icon(Icons.add)),
               )
             ],
@@ -60,7 +68,7 @@ class _DeatilPageState extends State<DeatilPage> {
           ),
           Row(
             children: [
-              Text("₺${widget.food.yemek_fiyat*productAmount}"),
+              Text("₺${ int.parse(widget.food.yemek_fiyat) * productAmount}"),
               ElevatedButton(onPressed: (){
                 // sepete Ekle
               }, child: Text("Sepete Ekle"))
