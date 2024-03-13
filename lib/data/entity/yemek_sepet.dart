@@ -18,7 +18,7 @@ class  FoodBasket{
     return FoodBasket(
         sepet_yemek_id: json["sepet_yemek_id"] as String,
         yemek_adi: json["yemek_adi"] as String,
-        sepet_resim_adi: json["sepet_resim_adi"] as String,
+        sepet_resim_adi: json["yemek_resim_adi"] as String,
         yemek_fiyat: json["yemek_fiyat"] as String,
         yemek_siparis_adet: json["yemek_siparis_adet"] as String,
         kullanici_adi: json["kullanici_adi"] as String);

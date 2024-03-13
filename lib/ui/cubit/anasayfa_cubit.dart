@@ -9,7 +9,7 @@ class MainPageCubit extends Cubit<List<Food>> implements MainPageCubitInterface{
 
   var frepo = FoodRepository();
   @override
-  void getAllFood() async {
+  Future<void> getAllFood() async {
     // TODO: implement getAllFood
     var foodsList = await frepo.getAllFood();
     emit(foodsList);
@@ -17,7 +17,7 @@ class MainPageCubit extends Cubit<List<Food>> implements MainPageCubitInterface{
   }
 
   @override
-  void getSearchWithName(String name) {
+  Future<void> getSearchWithName(String name) {
     // TODO: implement getSearchWithName
     throw UnimplementedError();
   }

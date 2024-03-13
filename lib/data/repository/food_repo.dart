@@ -26,8 +26,25 @@ class FoodRepository {
 
   Future<List<FoodBasket>> getAllFromBasket() async {
     var url = "http://kasimadalan.pe.hu/yemekler/sepettekiYemekleriGetir.php";
-    var veri = {"kullanici_adi":"batu"};
-    var cevap = await Dio().post(url,data:veri );
-    return parseFoodBasket(cevap.data.toString());
+    var veri = {"kullanici_adi":"cenk"};
+    var cevap = await Dio().post(url,data:FormData.fromMap(veri) );
+    print(cevap.data);
+    return  parseFoodBasket(cevap.data.toString());
+  }
+
+  Future<void> addBasket(String yemek_adi,String sepet_resim_adi,String yemek_fiyat,String kullanici_adi,String yemek_siparis_adet) async{
+    var url = "http://kasimadalan.pe.hu/yemekler/sepeteYemekEkle.php";
+    var veri = {
+      "yemek_adi" :yemek_adi,
+      "yemek_resim_adi" :sepet_resim_adi,
+      "yemek_fiyat" : yemek_fiyat,
+      "yemek_siparis_adet" : yemek_siparis_adet,
+      "kullanici_adi": "cenk"
+    };
+    var cevap  = await Dio().post(url,data: FormData.fromMap(veri));
+
+    print(cevap);
+
+
   }
 }

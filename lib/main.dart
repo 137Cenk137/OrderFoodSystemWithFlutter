@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yemek_sistemi/ui/cubit/anasayfa_cubit.dart';
+import 'package:yemek_sistemi/ui/cubit/basket_page_cubit.dart';
+import 'package:yemek_sistemi/ui/cubit/detail_page_cubit.dart';
 import 'package:yemek_sistemi/ui/views/anasayfa.dart';
 
 void main() {
@@ -14,7 +16,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [BlocProvider(create: (context) => MainPageCubit()),],
+      
+      providers: [BlocProvider(create: (context) => MainPageCubit()),
+      BlocProvider(create: (context)=>BasketPageCubit()),
+        BlocProvider(create: (context)=> DetailPageCubit())
+      ],
+
       child: MaterialApp(
         title: 'Flutter Demo',
 

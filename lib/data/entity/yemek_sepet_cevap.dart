@@ -1,8 +1,9 @@
 import 'package:yemek_sistemi/data/entity/yemek_sepet.dart';
 
 class FoodBasketCevap{
-  List<FoodBasket> foodBasket;
   int success;
+  List<FoodBasket> foodBasket;
+
 
   FoodBasketCevap({required this.foodBasket,required this.success});
 

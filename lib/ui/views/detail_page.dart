@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:yemek_sistemi/ui/cubit/basket_page_cubit.dart';
+import 'package:yemek_sistemi/ui/cubit/detail_page_cubit.dart';
 
 import '../../data/entity/yemekler.dart';
 
@@ -17,8 +20,8 @@ class _DeatilPageState extends State<DeatilPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blueAccent[200],
-        title: Text("Ürün Detayı",style: TextStyle(fontSize: 20),),
+        backgroundColor: Colors.orange[400],
+        title: Text("Ürün Detayı",style: TextStyle(fontSize: 20,color: Colors.white),),
         leading: IconButton(onPressed: (){
           Navigator.pop(context);
         }, icon: Icon(Icons.clear)),
@@ -33,7 +36,7 @@ class _DeatilPageState extends State<DeatilPage> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Image.network("http://kasimadalan.pe.hu/yemekler/resimler/${widget.food.yemek_resim_adi}"),
-          Text("₺${widget.food.yemek_fiyat}",style: TextStyle(color: Colors.cyanAccent,fontSize: 25,fontWeight:FontWeight.w200),),
+          Text("₺${widget.food.yemek_fiyat}",style: TextStyle(color: Colors.orange[400],fontSize: 25,fontWeight:FontWeight.w200),),
           Text("${widget.food.yemek_adi}",style: TextStyle(color: Colors.black,fontSize: 28,fontWeight: FontWeight.bold),),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -66,13 +69,27 @@ class _DeatilPageState extends State<DeatilPage> {
               TextButton(onPressed: (){} , child: Text("indirim %10")),
             ],
           ),
-          Row(
-            children: [
-              Text("₺${ int.parse(widget.food.yemek_fiyat) * productAmount}"),
-              ElevatedButton(onPressed: (){
-                // sepete Ekle
-              }, child: Text("Sepete Ekle"))
-            ],
+          Padding(
+            padding: const EdgeInsets.only(bottom: 20.0,left: 5,right: 5),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Expanded(child: Text("₺${ int.parse(widget.food.yemek_fiyat) * productAmount}",textAlign: TextAlign.center,style: TextStyle(fontSize: 20,color: Colors.orange[400]),)),
+                Expanded(
+                  child: TextButton(
+                    onPressed: (){
+                      //context.read<DetailPageCubit>().addBasket(widget.food.yemek_adi, widget.food.yemek_resim_adi, widget.food.yemek_fiyat, widget.food.yemek_id,productAmount.toString());
+                    },
+                    child: const Text("Sepete Ekle",style: TextStyle(color: Colors.white,fontSize: 20,shadows: [Shadow(color: Colors.black,blurRadius: 2,offset: Offset(0,1.5))]),),
+                    style: TextButton.styleFrom(
+                      backgroundColor: Colors.orange[400],
+
+                      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(12)))
+                    ),
+                  )
+                )
+              ],
+            ),
           )
         ],
         ),

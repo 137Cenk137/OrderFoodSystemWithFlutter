@@ -22,7 +22,8 @@ class _MainPage2State extends State<MainPage2> {
         child: Column(
           children: [
 
-            BlocBuilder<MainPageCubit,List<Food>>(builder:
+            BlocBuilder<MainPageCubit,List<Food>>(
+                builder:
                 (context,foodList) {
               if(foodList.isNotEmpty){
                 return Expanded(
