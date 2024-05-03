@@ -13,7 +13,7 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
 
-var tfSearch = TextEditingController();
+
 int secilenIndex = 0;
 var sayfalar = [const MainPage2(),const MainPage2(),const BasketPage(),const MainPage2()];
 
@@ -27,24 +27,19 @@ var sayfalar = [const MainPage2(),const MainPage2(),const BasketPage(),const Mai
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title:  const Text("Merhaba"),
 
-        actions: [
-          SizedBox(width:200, child: TextField(controller: tfSearch,decoration: InputDecoration(hintText: "ara"),)),
-          IconButton(onPressed: (){}, icon: Icon(Icons.search))
-        ],
-      ),
       body: sayfalar[secilenIndex],
       bottomNavigationBar: BottomNavigationBar(//null yapınca kayboluyor
         items: const [
           BottomNavigationBarItem( icon: Icon(Icons.house),label: "Anasayfa"),
           BottomNavigationBarItem(icon: Icon(Icons.favorite),label: "Favori"),
-          BottomNavigationBarItem(icon: Icon(Icons.shopping_basket_outlined),label: "hesap"),
-          BottomNavigationBarItem(icon: Icon(Icons.account_circle_rounded),label: "Sepet")
+          BottomNavigationBarItem(icon: Icon(Icons.shopping_basket_outlined),label: "Sepet"),
+          BottomNavigationBarItem(icon: Icon(Icons.account_circle_rounded),label: "hesap")
         ],
 
-
+        selectedFontSize: 20,
+        unselectedItemColor: Colors.grey[300],
+        selectedItemColor: Colors.orange[200],
         currentIndex: secilenIndex,
         onTap: (index){
           setState(() {

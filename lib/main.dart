@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yemek_sistemi/ui/cubit/anasayfa_cubit.dart';
 import 'package:yemek_sistemi/ui/cubit/basket_page_cubit.dart';
+import 'package:yemek_sistemi/ui/cubit/basket_total.dart';
 import 'package:yemek_sistemi/ui/cubit/detail_page_cubit.dart';
+import 'package:yemek_sistemi/ui/cubit/favori_page_cubit.dart';
 import 'package:yemek_sistemi/ui/views/anasayfa.dart';
 
 void main() {
@@ -19,7 +21,9 @@ class MyApp extends StatelessWidget {
       
       providers: [BlocProvider(create: (context) => MainPageCubit()),
       BlocProvider(create: (context)=>BasketPageCubit()),
-        BlocProvider(create: (context)=> DetailPageCubit())
+        BlocProvider(create: (context)=> DetailPageCubit()),
+        BlocProvider(create: (context)=>BasketTotalPrice()),
+        BlocProvider(create: (context)=>FavoriFoodCubit())
       ],
 
       child: MaterialApp(

@@ -19,6 +19,7 @@ class _DeatilPageState extends State<DeatilPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.orange[50],
       appBar: AppBar(
         backgroundColor: Colors.orange[400],
         title: Text("Ürün Detayı",style: TextStyle(fontSize: 20,color: Colors.white),),
@@ -46,6 +47,10 @@ class _DeatilPageState extends State<DeatilPage> {
                   //-
                   setState(() {
                     productAmount--;
+                    if(productAmount <= 1)
+                      {
+                        productAmount = 1;
+                      }
                   });
                 }, child: Icon(Icons.remove)),
               ),
@@ -76,15 +81,35 @@ class _DeatilPageState extends State<DeatilPage> {
               children: [
                 Expanded(child: Text("₺${ int.parse(widget.food.yemek_fiyat) * productAmount}",textAlign: TextAlign.center,style: TextStyle(fontSize: 20,color: Colors.orange[400]),)),
                 Expanded(
-                  child: TextButton(
-                    onPressed: (){
-                      //context.read<DetailPageCubit>().addBasket(widget.food.yemek_adi, widget.food.yemek_resim_adi, widget.food.yemek_fiyat, widget.food.yemek_id,productAmount.toString());
-                    },
-                    child: const Text("Sepete Ekle",style: TextStyle(color: Colors.white,fontSize: 20,shadows: [Shadow(color: Colors.black,blurRadius: 2,offset: Offset(0,1.5))]),),
-                    style: TextButton.styleFrom(
-                      backgroundColor: Colors.orange[400],
+                  child: Container(
+                    child: TextButton(
 
-                      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(12)))
+                      onPressed: (){
+                        context.read<DetailPageCubit>().addBasket(widget.food.yemek_adi, widget.food.yemek_resim_adi, widget.food.yemek_fiyat, widget.food.yemek_id,productAmount.toString());
+                      },
+                      child: const Text("Sepete Ekle",style: TextStyle(color: Colors.white,fontSize: 20,shadows: [Shadow(color: Colors.black,blurRadius: 2,offset: Offset(0,1.5))]),),
+
+
+                    ),
+
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.orange.shade400,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.orange.shade800,
+                          offset: Offset(10.0,10.0),
+                          blurRadius: 15.0,
+                          spreadRadius: 1.0
+                      ),
+                        BoxShadow(
+                          color: Colors.white,
+                          offset: Offset(-10.0,-10.0),
+                          blurRadius: 15.0,
+                          spreadRadius: 1.0
+                        )
+                      ],
+
                     ),
                   )
                 )

@@ -42,9 +42,16 @@ class FoodRepository {
       "kullanici_adi": "cenk"
     };
     var cevap  = await Dio().post(url,data: FormData.fromMap(veri));
-
-    print(cevap);
-
-
   }
+
+  Future<void> deleteFromBasket(String sepet_yemek_id)async{
+    String url = "http://kasimadalan.pe.hu/yemekler/sepettenYemekSil.php";
+    var veri = {
+      "sepet_yemek_id":sepet_yemek_id,
+      "kullanici_adi": "cenk"
+    };
+    var cevap = await Dio().post(url,data: FormData.fromMap(veri));
+    print(cevap);
+  }
+
 }
