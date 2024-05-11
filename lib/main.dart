@@ -23,7 +23,8 @@ class MyApp extends StatelessWidget {
       BlocProvider(create: (context)=>BasketPageCubit()),
         BlocProvider(create: (context)=> DetailPageCubit()),
         BlocProvider(create: (context)=>BasketTotalPrice()),
-        BlocProvider(create: (context)=>FavoriFoodCubit())
+        BlocProvider(create: (context)=>FavoriFoodCubit()),
+        BlocProvider(create: (context)=> FavoriFoodCubit())
       ],
 
       child: MaterialApp(

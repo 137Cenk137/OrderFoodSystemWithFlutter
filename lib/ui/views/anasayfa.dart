@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yemek_sistemi/ui/cubit/anasayfa_cubit.dart';
 import 'package:yemek_sistemi/ui/views/basket_page.dart';
+import 'package:yemek_sistemi/ui/views/favorite_page.dart';
 import 'package:yemek_sistemi/ui/views/main_page.dart';
 
 class MainPage extends StatefulWidget {
@@ -15,7 +16,7 @@ class _MainPageState extends State<MainPage> {
 
 
 int secilenIndex = 0;
-var sayfalar = [const MainPage2(),const MainPage2(),const BasketPage(),const MainPage2()];
+var sayfalar = [const MainPage2(),const FavoritePage(),const BasketPage(),const MainPage2()];
 
 
 @override
